@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luz & Som Studio | Clipes e Vídeos Gospel</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #4f46e5;
+      --primary-2: #7c3aed;
+      --card: #ffffff;
+      --line: #e5e7eb;
+      --ok: #16a34a;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f8faff 0%, #eef2ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(248, 250, 255, 0.88);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand span { color: var(--primary); }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); opacity: 0.96; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.22);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 1px solid #c7d2fe;
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.08;
+      margin: 0 0 16px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 28px;
+    }
+
+    .pill {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #374151;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(229,231,235,0.95);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    .video-mock {
+      aspect-ratio: 16 / 10;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #312e81, #7c3aed 55%, #c4b5fd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 18px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef2ff;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #ede9fe;
+      color: #5b21b6;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .lead-box {
+      background: linear-gradient(135deg, #ffffff, #eef2ff);
+      border: 1px solid #c7d2fe;
+      border-radius: 24px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    form {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 10px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #374151;
+    }
+
+    .author {
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #312e81, #6d28d9);
+      color: white;
+      border-radius: 28px;
+      padding: 38px 24px;
+      box-shadow: 0 24px 60px rgba(49, 46, 129, 0.25);
+    }
+
+    .cta p { color: rgba(255,255,255,0.86); }
+
+    footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    ul.clean {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    ul.clean li { margin-bottom: 8px; }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .lead-box,
+      .grid-3,
+      .steps,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+      .hero { padding-top: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Luz & <span>Som Studio</span></div>
+      <nav class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#ebook">E-book grátis</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Transforme sua música gospel em um clipe que emociona e alcança mais pessoas</h1>
+          <p class="subtitle">
+            Produção de clipes, vídeos acústicos e conteúdo audiovisual para artistas e ministérios de louvor que desejam crescer no digital com qualidade, propósito e identidade.
+          </p>
+
+          <div class="pill-row">
+            <div class="pill">🎬 Clipes musicais</div>
+            <div class="pill">🎙️ Vídeos acústicos</div>
+            <div class="pill">📱 Conteúdo para redes sociais</div>
+            <div class="pill">✨ Foco no público gospel</div>
+          </div>
+
+          <a class="btn btn-primary" href="#ebook">Quero o e-book gratuito</a>
+          <a class="btn btn-secondary" href="#contato" style="margin-left: 10px;">Solicitar orçamento</a>
+        </div>
+
+        <div class="hero-card">
+          <div class="video-mock">▶</div>
+          <h3 style="margin: 0 0 8px;">Seu ministério merece ser visto com excelência</h3>
+          <p style="margin: 0; color: var(--muted);">
+            Criamos vídeos que valorizam sua mensagem, fortalecem sua presença online e ajudam sua música a tocar ainda mais vidas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="container">
+        <h2 class="section-title">O que oferecemos</h2>
+        <p class="section-subtitle">
+          Soluções audiovisuais pensadas para artistas independentes, bandas e ministérios de louvor que querem unir qualidade, propósito e estratégia.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">🎥</div>
+            <h3>Clipes Musicais</h3>
+            <p>Produção visual para lançar músicas com mais impacto, identidade e profissionalismo.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🎶</div>
+            <h3>Vídeos Acústicos</h3>
+            <p>Formatos mais intimistas e acessíveis, ideais para fortalecer conexão com o público.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📲</div>
+            <h3>Conteúdo para Redes</h3>
+            <p>Recortes, teasers e materiais visuais para ampliar alcance no Instagram, YouTube e TikTok.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="container">
+        <h2 class="section-title">Como funciona</h2>
+        <p class="section-subtitle">Um processo simples, organizado e pensado para facilitar a produção do seu projeto.</p>
+        <div class="steps">
+          <div class="card">
+            <div class="step-number">1</div>
+            <h3>Briefing</h3>
+            <p>Entendemos sua música, sua mensagem e o objetivo do lançamento.</p>
+          </div>
+          <div class="card">
+            <div class="step-number">2</div>
+            <h3>Planejamento</h3>
+            <p>Definimos conceito visual, cenário, cronograma e formato ideal para o projeto.</p>
+          </div>
+          <div class="card">
+            <div class="step-number">3</div>
+            <h3>Gravação</h3>
+            <p>Realizamos a captação com foco em qualidade visual, organização e direção.</p>
+          </div>
+          <div class="card">
+            <div class="step-number">4</div>
+            <h3>Entrega</h3>
+            <p>Você recebe um material pronto para divulgar sua música com mais força no digital.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ebook">
+      <div class="container">
+        <div class="lead-box">
+          <div>
+            <h2 style="margin-top:0; font-size: 2rem;">Baixe gratuitamente o e-book:</h2>
+            <p style="font-size:1.15rem; margin-top:0;"><strong>Como gravar um clipe gospel de qualidade com baixo custo</strong></p>
+            <ul class="clean">
+              <li>Como planejar sua gravação sem desperdício</li>
+              <li>Dicas práticas de cenário, iluminação e enquadramento</li>
+              <li>Como usar equipamentos simples, inclusive celular</li>
+              <li>Estratégias para divulgar seu clipe nas redes sociais</li>
+            </ul>
+            <p class="note">Esse material funciona como lead magnet para captar contatos interessados no serviço.</p>
+          </div>
+
+          <form>
+            <input type="text" placeholder="Seu nome" />
+            <input type="email" placeholder="Seu melhor e-mail" />
+            <button class="btn btn-primary" type="button" style="width:100%; border:none; cursor:pointer;">Quero receber o e-book</button>
+            <p class="note">Ao preencher, você entra para nossa lista de novidades e conteúdos.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Por que escolher a Luz & Som Studio?</h2>
+        <p class="section-subtitle">Porque entendemos que sua música não é só conteúdo: é mensagem, propósito e ministério.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Especialização no segmento gospel</h3>
+            <p>Produção alinhada à linguagem, estética e valores do público cristão.</p>
+          </div>
+          <div class="card">
+            <h3>Mais acessibilidade</h3>
+            <p>Soluções pensadas para artistas iniciantes e projetos com orçamento enxuto.</p>
+          </div>
+          <div class="card">
+            <h3>Foco em resultado digital</h3>
+            <p>Os vídeos são desenvolvidos para gerar alcance, conexão e posicionamento online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Depoimentos</h2>
+        <p class="section-subtitle">Exemplo de prova social que você pode manter na versão final.</p>
+        <div class="testimonials">
+          <div class="card">
+            <p class="quote">“Nosso vídeo ficou bonito, profissional e passou exatamente a mensagem da canção.”</p>
+            <div class="author">— Ministério de Louvor Restauração</div>
+          </div>
+          <div class="card">
+            <p class="quote">“Conseguimos divulgar nosso lançamento com muito mais impacto nas redes sociais.”</p>
+            <div class="author">— Banda Adoração Viva</div>
+          </div>
+          <div class="card">
+            <p class="quote">“Foi a melhor forma de transformar nossa música em algo visualmente marcante.”</p>
+            <div class="author">— Cantor Gospel Independente</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="cta">
+          <h2 style="margin-top:0; font-size:2rem;">Pronto para tirar seu projeto do papel?</h2>
+          <p>Solicite um orçamento e descubra como sua música pode ganhar mais alcance com um audiovisual de qualidade.</p>
+          <a class="btn btn-secondary" href="mailto:contato@luzesomstudio.com" style="background:white; color:#4f46e5;">Entrar em contato</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Luz & Som Studio — Landing page criada para divulgação de serviços musicais gospel.
+    </div>
+  </footer>
+</body>
+</html>
