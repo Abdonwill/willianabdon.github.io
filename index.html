@@ -413,10 +413,13 @@
             <p class="note">Esse material funciona como lead magnet para captar contatos interessados no serviço.</p>
           </div>
 
-          <form>
-            <input type="text" placeholder="Seu nome" />
-            <input type="email" placeholder="Seu melhor e-mail" />
-            <button class="btn btn-primary" type="button" style="width:100%; border:none; cursor:pointer;">Quero receber o e-book</button>
+          <form action="https://formsubmit.co/SEUEMAIL@EXEMPLO.COM" method="POST">
+            <input type="text" name="name" placeholder="Seu nome" required />
+            <input type="email" name="email" placeholder="Seu melhor e-mail" required />
+            <input type="hidden" name="_subject" value="Novo cadastro para receber o e-book" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_autoresponse" value="Olá, aqui está seu ebook." />
+            <button class="btn btn-primary" type="submit" style="width:100%; border:none; cursor:pointer;">Quero receber o e-book</button>
             <p class="note">Ao preencher, você entra para nossa lista de novidades e conteúdos.</p>
           </form>
         </div>
